@@ -5,42 +5,21 @@
  */
 package model;
 
+import javax.persistence.SecondaryTable;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  *
  * @author Vu Dai Luong
  */
+@Builder
+@Getter
+@Setter
+@ToString
 public class category {
     private int id;
-    private String name;
-
-    public category() {
-    }
-
-    public category(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "category{" + "id=" + id + ", name=" + name + '}';
-    }
-    
-    
+    private String name; 
 }

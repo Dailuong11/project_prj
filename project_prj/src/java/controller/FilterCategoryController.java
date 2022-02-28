@@ -5,26 +5,20 @@
  */
 package controller;
 
-import dao.CategoryDAO;
-import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.category;
-import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "HomeController", urlPatterns = {"/main.html"})
-public class HomeController extends HttpServlet {
+@WebServlet(name = "FilterCategoryController", urlPatterns = {"/filter-category"})
+public class FilterCategoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,11 +33,16 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            List<category> listCategories = new CategoryDAO().getALLCategories();
-            List<company> listCompany = new CompanyDAO().getALLCompany();
-            request.setAttribute("listCompany", listCompany);
-            request.setAttribute("listCategories", listCategories);
-           request.getRequestDispatcher("index.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet FilterCategoryController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet FilterCategoryController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
