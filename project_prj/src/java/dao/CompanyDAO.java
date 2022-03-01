@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.category;
 import model.company;
 
 /**
@@ -25,7 +24,7 @@ public class CompanyDAO {
     public List<company> getALLCompany() {
             List<company> list = new ArrayList<>();
         try {
-            String sql = "select * from Company";
+            String sql = "select*from Company";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

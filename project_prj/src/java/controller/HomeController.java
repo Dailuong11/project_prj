@@ -10,7 +10,6 @@ import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,9 +39,9 @@ public class HomeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             List<category> listCategories = new CategoryDAO().getALLCategories();
-            List<company> listCompany = new CompanyDAO().getALLCompany();
-            request.setAttribute("listCompany", listCompany);
+            List<company> listCp = new CompanyDAO().getALLCompany();           
             request.setAttribute("listCategories", listCategories);
+            request.setAttribute("listCp", listCp);
            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

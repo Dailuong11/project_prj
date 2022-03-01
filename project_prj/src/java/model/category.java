@@ -5,7 +5,6 @@
  */
 package model;
 
-import javax.persistence.SecondaryTable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

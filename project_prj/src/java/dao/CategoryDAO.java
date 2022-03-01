@@ -30,7 +30,9 @@ public class CategoryDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 //                category category = new category(rs.getInt(1), rs.getString(2));
-                category Category = category.builder().id(rs.getInt(1)).name(rs.getString(2)).build();
+                category Category = category.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2)).build();
                 list.add(Category);
             }
         } catch (Exception ex) {
