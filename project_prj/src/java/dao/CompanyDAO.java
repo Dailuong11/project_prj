@@ -46,5 +46,33 @@ public class CompanyDAO {
         }
         return list;
     }
+
+    public List<company> getCompaniesByCategoryId(int categoryId) {
+         List<company> list = new ArrayList<>();
+         try {
+            String sql = "select * from company where Company.category_id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                company com = company.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .quantity(rs.getInt(3))
+                        .salary(rs.getDouble(4))
+                        .description(rs.getString(5))
+                        .imagine(rs.getString(6))
+                        .create_date(rs.getString(7))
+                        .phone(rs.getInt(8))
+                        .category_id(rs.getInt(9)).build();
+                list.add(com);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    
+    }
     
 }

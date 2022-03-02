@@ -22,8 +22,7 @@ import model.company;
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "HomeController", urlPatterns = {"/main.html"})
-public class HomeController extends HttpServlet {
+public class homeController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +40,13 @@ public class HomeController extends HttpServlet {
             List<category> listCategories = new CategoryDAO().getALLCategories();
             List<company> listCp = new CompanyDAO().getALLCompany();           
             request.setAttribute("listCategories", listCategories);
-            request.setAttribute("listCp", listCp);
+            int page = 1;
+            String pageStr = request.getParameter("page");
+            if (pageStr!= null) {
+                page = Integer.parseInt(pageStr);
+            }
+            final int PAGE_SIZE = 6;
+            request.setAttribute("listCp", listCp.subList((page-1)*PAGE_SIZE, page*PAGE_SIZE));
            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

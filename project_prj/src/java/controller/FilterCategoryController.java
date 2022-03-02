@@ -5,13 +5,18 @@
  */
 package controller;
 
+import dao.CategoryDAO;
+import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.category;
+import model.company;
 
 /**
  *
@@ -34,15 +39,13 @@ public class FilterCategoryController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet FilterCategoryController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet FilterCategoryController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
+            List<company> listCp = new CompanyDAO().getCompaniesByCategoryId(categoryId);
+            List<category> listCategories = new CategoryDAO().getALLCategories();
+            request.setAttribute("listCp", listCp);
+            request.setAttribute("listCategories", listCategories);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 
