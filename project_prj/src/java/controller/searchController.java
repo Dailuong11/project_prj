@@ -5,24 +5,21 @@
  */
 package controller;
 
-import dao.CategoryDAO;
 import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.category;
 import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-public class homeController extends HttpServlet {
+public class searchController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +33,15 @@ public class homeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        final int PAGE_SIZE = 6;    
-        List<category> listCategories = new CategoryDAO().getALLCategories();           
-            CompanyDAO companyDAO = new CompanyDAO();
-            int page = 1;
-            String pageStr = request.getParameter("page");
-            if (pageStr!= null) {
-                page = Integer.parseInt(pageStr);
-            }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+           String keyword = request.getParameter("keyword");
+           
+            List<company> listCompany = new CompanyDAO().search(keyword);
             
-            List<company> listCp =  companyDAO.getProductsWithPagging(page,PAGE_SIZE);
-            int totalCompany = companyDAO.getTotalProducts();
-            int totalPage = totalCompany/PAGE_SIZE;
-            if(totalCompany % PAGE_SIZE != 0){
-            totalCompany += 1;
-            }
-            request.setAttribute("page", page);
-            request.setAttribute("totalPage", totalPage);
-            request.setAttribute("listCategories", listCategories);
-            request.setAttribute("listCp", listCp);
-           request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.setAttribute("listCompany", listCompany);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

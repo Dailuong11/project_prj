@@ -31,7 +31,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">DREAMJOB</a>
+                <a class="navbar-brand" href="home.html">DREAMJOB</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -67,12 +67,13 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex mx-auto">
+                    <form action="search" class="d-flex mx-auto">
                         <input
                             class="form-control me-2"
                             type="search"
                             placeholder="Search"
                             aria-label="Search"
+                            name="keyword"
                             />
                         <button class="btn btn-outline-success" type="submit">
                             Search
@@ -171,11 +172,11 @@
                         </div>
                         <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="main?page=1">1</a></li>
-                                <li class="page-item"><a class="page-link" href="main?page=2">2</a></li>
-                                <li class="page-item"><a class="page-link" href="main?page=3">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="main.html?page=${page-1}">Previous</a></li>
+                                <c:forEach begin="1" end="${totalPage}" var="i">
+                                <li class="page-item ${i==page?"active":""}"><a class="page-link" href="main.html?page=${i}">${i}</a></li>
+                                </c:forEach>
+                                <li class="page-item"><a class="page-link" href="main.html?page=${page+1}">Next</a></li>
                             </ul>
                         </nav>
                     </div>
