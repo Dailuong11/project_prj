@@ -5,25 +5,20 @@
  */
 package controller;
 
-import dao.CategoryDAO;
 import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.category;
 import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "FilterCategoryController", urlPatterns = {"/filter-category"})
-public class FilterCategoryController extends HttpServlet {
+public class DetailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +34,11 @@ public class FilterCategoryController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-
-            List<company> listCp = new CompanyDAO().getCompaniesByCategoryId(categoryId);
-            List<category> listCategories = new CategoryDAO().getALLCategories();
-            request.setAttribute("listCp", listCp);
-   
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            int companyId = Integer.parseInt(request.getParameter("companyId"));
+            
+            company cp = new CompanyDAO().getCompanyById(companyId);
+            request.setAttribute("cp", cp);
+            request.getRequestDispatcher("detail.jsp").forward(request, response);
         }
     }
 

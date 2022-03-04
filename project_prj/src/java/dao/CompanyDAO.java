@@ -157,4 +157,31 @@ public class CompanyDAO {
         return list;
     }
 
+    public company getCompanyById(int companyId) {
+        try {
+            String sql = "select * from company where id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, companyId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                company cp = company.builder()
+                        .id(rs.getInt(1))
+                        .name(rs.getString(2))
+                        .quantity(rs.getInt(3))
+                        .salary(rs.getDouble(4))
+                        .description(rs.getString(5))
+                        .imagine(rs.getString(6))
+                        .create_date(rs.getString(7))
+                        .phone(rs.getInt(8))
+                        .category_id(rs.getInt(9))
+                        .profesion(rs.getString(10)).build();
+               return cp;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;  
+    }
+
 }

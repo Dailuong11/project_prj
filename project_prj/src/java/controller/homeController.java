@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.category;
 import model.company;
 
@@ -38,7 +39,9 @@ public class homeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         final int PAGE_SIZE = 6;    
         List<category> listCategories = new CategoryDAO().getALLCategories();           
-            CompanyDAO companyDAO = new CompanyDAO();
+        HttpSession session = request.getSession();
+        
+        CompanyDAO companyDAO = new CompanyDAO();
             int page = 1;
             String pageStr = request.getParameter("page");
             if (pageStr!= null) {
@@ -53,7 +56,7 @@ public class homeController extends HttpServlet {
             }
             request.setAttribute("page", page);
             request.setAttribute("totalPage", totalPage);
-            request.setAttribute("listCategories", listCategories);
+            session.setAttribute("listCategories",listCategories);
             request.setAttribute("listCp", listCp);
            request.getRequestDispatcher("index.jsp").forward(request, response);
     }

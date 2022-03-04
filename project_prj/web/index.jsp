@@ -28,68 +28,7 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="home.html">DREAMJOB</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                id="navbarDropdown"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                >Shop</a
-                            >
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form action="search" class="d-flex mx-auto">
-                        <input
-                            class="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                            name="keyword"
-                            />
-                        <button class="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
-                    </form>
-                    <form class="d-flex my-2">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                    <button class="btn btn-outline-primary ms-lg-2">Login</button>
-                </div>
-            </div>
-        </nav>
+        <%@include file="components/navbarComponent.jsp" %>
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -108,7 +47,7 @@
                     <div class="col-md-3 mb-5">
                         <h3>List Categories</h3>
                         <ul class="list-group">
-                            <c:forEach items="${listCategories}" var="C">
+                            <c:forEach items="${sessionScope.listCategories}" var="C">
                                 <li class="list-group-item"><a href="filter-category?categoryId=${C.id}">${C.name}</a></li>
                                 </c:forEach>
                         </ul>
@@ -130,11 +69,13 @@
                                             Sale
                                         </div>
                                         <!-- Product image-->
+                                        <a href="detail?companyId=${p.id}">
                                         <img
                                             class="card-img-top"
                                             src="${p.imagine}"
                                             alt="..."
                                             />
+                                        </a>
                                         <!-- Product details-->
                                         <div class="card-body p-4">
                                             <div class="text-center">
@@ -170,7 +111,12 @@
                             </c:forEach>
 
                         </div>
-                        <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                        <c:choose>
+                            <c:when test="${listCp==null || listCp.size()==0}">
+                                not founds
+                            </c:when>
+                            <c:otherwise>
+                                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="main.html?page=${page-1}">Previous</a></li>
                                 <c:forEach begin="1" end="${totalPage}" var="i">
@@ -179,21 +125,15 @@
                                 <li class="page-item"><a class="page-link" href="main.html?page=${page+1}">Next</a></li>
                             </ul>
                         </nav>
+                            </c:otherwise>
+                        </c:choose>
+                        
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">
-                    Copyright &copy; Your Website 2021
-                </p>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+<!--        footer-->
+       <%@include file="components/footerComponents.jsp" %>
+        
     </body>
 </html>
