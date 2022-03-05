@@ -12,6 +12,10 @@
         <servlet-name>DetailController</servlet-name>
         <servlet-class>controller.DetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addToCardController</servlet-name>
+        <servlet-class>controller.addToCardController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DetailController</servlet-name>
         <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addToCardController</servlet-name>
+        <url-pattern>/add-to-card</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -28,7 +28,7 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-   <%@include file="components/navbarComponent.jsp" %>
+        <%@include file="components/navbarComponent.jsp" %>
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -43,12 +43,8 @@
                         </div>
                         <p class="lead"> ${cp.description}</p>
                         <div class="d-flex">
-<!--                           <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />-->
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                           <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                            <!--                           <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />-->
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 NOP HO SO
                             </button>
@@ -65,9 +61,9 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                           
+
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            
+
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -78,9 +74,10 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
+                           <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                NOP HO SO
+                            </button>
                         </div>
                     </div>
                     <div class="col mb-5">
@@ -108,9 +105,10 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                NOP HO SO
+                            </button>
                         </div>
                     </div>
                     <div class="col mb-5">
@@ -130,9 +128,10 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                NOP HO SO
+                            </button>
                         </div>
                     </div>
                     <div class="col mb-5">
@@ -157,16 +156,17 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
+                           <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                NOP HO SO
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
-         <%@include file="components/footerComponents.jsp" %>
-       
+        <%@include file="components/footerComponents.jsp" %>
+
     </body>
 </html>
