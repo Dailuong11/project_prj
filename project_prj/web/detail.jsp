@@ -45,8 +45,10 @@
                         <div class="d-flex">
                             <!--                           <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />-->
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                NOP HO SO
+                                <a href="add-to-card?companyId=${cp.id}" class="bi-cart-fill me-1">UNG TUYEN</a>
+                            </button>
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
                             </button>
                         </div>
                     </div>
@@ -74,9 +76,8 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                           <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                NOP HO SO
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button" >
+                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
                             </button>
                         </div>
                     </div>
@@ -106,8 +107,7 @@
                             </div>
                             <!-- Product actions-->
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                NOP HO SO
+                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
                             </button>
                         </div>
                     </div>
@@ -129,9 +129,7 @@
                             </div>
                             <!-- Product actions-->
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                NOP HO SO
-                            </button>
+                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
                         </div>
                     </div>
                     <div class="col mb-5">
@@ -157,8 +155,7 @@
                             </div>
                             <!-- Product actions-->
                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                NOP HO SO
+                               <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
                             </button>
                         </div>
                     </div>

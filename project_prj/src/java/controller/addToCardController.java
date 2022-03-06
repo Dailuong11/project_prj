@@ -5,12 +5,19 @@
  */
 package controller;
 
+import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.cart;
+import model.company;
 
 /**
  *
@@ -33,14 +40,32 @@ public class addToCardController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            int companyId = Integer.parseInt(request.getParameter("companyId"));
-           
+           //map productId | cart
+            HttpSession session = request.getSession();
+            Map<Integer,cart> carts = (Map<Integer,cart>) session.getAttribute("carts");
+            if(carts == null){
+             carts = new LinkedHashMap<>();
+            }
+            
+            
+            
            //1. Lay company ung voi id nhan duoc
            // co 2th
+           if(carts.containsKey(companyId)){
+               int oldquality = carts.get(companyId).getQuanity();
+               carts.get(companyId).setQuanity(oldquality+1);
+           }else{
+               company Company = new CompanyDAO().getCompanyById(companyId);
+               carts.put(companyId, cart.builder().com(Company).quanity(1).build());
+           }
+           //luu carts len session
+           session.setAttribute("carts", carts);
+            response.sendRedirect("detail?companyId="+companyId);
            //TH1: San pham chua co tren gio hang --> them no vao gio hang (Add Company to session)
            //TH2 san pham da co tren gio hang -> cap nhat lai so luong san pham tren gio hang (Update Company in sesion)
            
         }
-    }
+   }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -82,3 +107,5 @@ public class addToCardController extends HttpServlet {
     }// </editor-fold>
 
 }
+
+

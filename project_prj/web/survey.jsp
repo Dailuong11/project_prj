@@ -4,6 +4,7 @@
     Author     : Vu Dai Luong
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">NOP HO SO</button>
+                                <a href="add-to-card?companyId=${cp.id}" class="btn btn-primary w-100 py-3" type="submit"> NOP HO SO</a>                         
                             </div>
                         </div>
                     </form>

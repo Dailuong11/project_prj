@@ -16,6 +16,18 @@
         <servlet-name>addToCardController</servlet-name>
         <servlet-class>controller.addToCardController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>surveyController</servlet-name>
+        <servlet-class>controller.surveyController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cartsController</servlet-name>
+        <servlet-class>controller.cartsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>controller.DeleteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>addToCardController</servlet-name>
         <url-pattern>/add-to-card</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>surveyController</servlet-name>
+        <url-pattern>/survey.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cartsController</servlet-name>
+        <url-pattern>/carts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/delete-cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
