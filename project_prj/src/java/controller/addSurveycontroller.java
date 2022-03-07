@@ -6,20 +6,22 @@
 package controller;
 
 import dao.CompanyDAO;
+import dao.customersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-public class DetailController extends HttpServlet {
+@WebServlet(name = "addSurveycontroller", urlPatterns = {"/addsurvey"})
+public class addSurveycontroller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +32,10 @@ public class DetailController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+ protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int companyId = Integer.parseInt(request.getParameter("companyId"));
-            HttpSession session = request.getSession();
-            session.setAttribute("ids", companyId);
-            company cp = new CompanyDAO().getCompanyById(companyId);
-            request.setAttribute("cp", cp);
-            request.getRequestDispatcher("detail.jsp").forward(request, response);
         }
     }
 
@@ -56,7 +51,7 @@ public class DetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         processRequest(request, response);
     }
 
     /**
@@ -70,7 +65,20 @@ public class DetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         String names = request.getParameter("name");
+        String gmails = request.getParameter("gmail");
+        String roles = request.getParameter("role");
+        String descriptions = request.getParameter("description");
+        int phones = Integer.parseInt(request.getParameter("phone"));
+        customersDAO dao = new customersDAO();
+        
+        
+        dao.insertCustomes(names, gmails, roles, descriptions, phones);
+        
+        int companyId = (int)request.getSession().getAttribute("ids");
+        company cp = new CompanyDAO().getCompanyById(companyId);
+            request.setAttribute("cp", cp);
+        request.getRequestDispatcher("surveysusessfull.jsp").forward(request, response);
     }
 
     /**

@@ -48,8 +48,11 @@
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
                                 <a href="add-to-card?companyId=${cp.id}" class="bi-cart-fill me-1">UNG TUYEN</a>
                             </button>
+                            <div class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
+                                <a class="bi-cart-fill me-1">DANG KI THANH CONG</a>
+                            </div>
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
+                                <a class="bi-cart-fill me-1">THAY DOI HO SO</a>
                             </button>
                         </div>
                     </div>

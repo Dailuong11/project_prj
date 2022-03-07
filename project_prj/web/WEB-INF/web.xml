@@ -28,6 +28,10 @@
         <servlet-name>DeleteController</servlet-name>
         <servlet-class>controller.DeleteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addController</servlet-name>
+        <servlet-class>controller.addController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>DeleteController</servlet-name>
         <url-pattern>/delete-cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addController</servlet-name>
+        <url-pattern>/add</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
