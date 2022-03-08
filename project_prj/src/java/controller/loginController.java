@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,21 +5,22 @@
  */
 package controller;
 
-import dao.CompanyDAO;
+import dao.accountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.company;
+import model.account;
 
 /**
  *
  * @author Vu Dai Luong
  */
-public class searchController extends HttpServlet {
+@WebServlet(name = "loginController", urlPatterns = {"/login"})
+public class loginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,14 +34,14 @@ public class searchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           String keyword = request.getParameter("keyword");
-           
-            List<company> listCompany = new CompanyDAO().search(keyword);
-            
-            request.setAttribute("listCompany", listCompany);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
+        accountDAO dao = new accountDAO();
+        account a = dao.login(username, password);
+        if (a == null) {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("main.html").forward(request, response);
         }
     }
 

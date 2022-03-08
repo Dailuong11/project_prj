@@ -32,6 +32,10 @@
         <servlet-name>addController</servlet-name>
         <servlet-class>controller.addController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchcontroller</servlet-name>
+        <servlet-class>controller.searchcontroller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
