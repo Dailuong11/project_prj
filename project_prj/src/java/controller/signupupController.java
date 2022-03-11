@@ -5,9 +5,9 @@
  */
 package controller;
 
+
 import dao.accountDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ import model.account;
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "signupController", urlPatterns = {"/signup"})
+public class signupupController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +34,23 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        accountDAO dao = new accountDAO();
-        account a = dao.login(username, password);
-        if (a == null) {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            request.setAttribute("mess", "wrong user of password");
-        } else {
-            response.sendRedirect("main.html");
+       String Firstname = request.getParameter("firstname");
+       String Lastname = request.getParameter("lastname");
+       String Username = request.getParameter("username");
+       String Pass = request.getParameter("pass");
+       String Comfirmpass = request.getParameter("comfirmpass");
+        if (Pass.equals(Comfirmpass)) {
+            response.sendRedirect("login.jsp");
+        }
+        else{
+            accountDAO dao = new accountDAO();
+            account a = dao.checkAccountExist(Username);
+            if (a == null) {
+                dao.singup(Firstname, Lastname, Username, Pass);
+                response.sendRedirect("main.html");
+            }else{
+            response.sendRedirect("login.jsp");
+            }
         }
     }
 
