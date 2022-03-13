@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,13 +37,24 @@ public class loginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
+        boolean remember = request.getParameter("remember") != null;
         accountDAO dao = new accountDAO();
         account a = dao.login(username, password);
-        if (a == null) {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            request.setAttribute("mess", "wrong user of password");
+        if (a != null) {
+            if (remember) {
+                Cookie usernameCookie = new Cookie("user", username);
+                usernameCookie.setMaxAge(60*60*24);
+                Cookie passwordCookie = new Cookie("pass", password);
+                passwordCookie.setMaxAge(60*60*24);
+                response.addCookie(usernameCookie);
+                response.addCookie(passwordCookie);
+            }
+             request.getSession().setAttribute("a", a);
+             response.sendRedirect("main.html");
         } else {
-            response.sendRedirect("main.html");
+            request.setAttribute("error", "Username or password incorrect");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            
         }
     }
 
@@ -58,8 +70,31 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        Cookie[] cookies = request.getCookies();
+            String username = null;
+            String password = null;
+            for (Cookie cooky : cookies) {
+                if (cooky.getName().equals("username")) {
+                    username = cooky.getValue();
+                }
+                if (cooky.getName().equals("password")) {
+                    password = cooky.getValue();
+                }
+                if (username != null && password != null) {
+                    break;
+                }
+            }
+            if (username != null && password != null) {
+                account ac = new accountDAO().login(username, password);
+                if (ac != null) { // cookie hop le
+                    request.getSession().setAttribute("ac", ac);
+                    response.sendRedirect("maim.html");
+                    return;
+                }
+            }
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -86,3 +121,4 @@ public class loginController extends HttpServlet {
     }// </editor-fold>
 
 }
+

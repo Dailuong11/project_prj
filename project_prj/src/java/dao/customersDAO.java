@@ -15,7 +15,7 @@ import model.customers;
  *
  * @author Vu Dai Luong
  */
-public class customersDAO {
+public class customersDAO extends DBContext{
 
     public void insertCustomes(String name, String Email, String role, String descriosion, int phone) {
         String query = "INSERT INTO [dbo].[customers]\n"

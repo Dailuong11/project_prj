@@ -28,6 +28,7 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
                                         <form action="login" method="post">
+                                            
                                             <div class="form-floating mb-3">
                                                 <input name="user" class="form-control" id="inputUsername" type="username" placeholder="name" />
                                                 <label for="inputUsename">Username</label>
@@ -37,12 +38,13 @@
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                <input name="remember" class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
-                                            <p class="text-danger">${mess}</p>  
+                                            <div>
+                                            <p class="text-danger">${error}</p>
+                                            </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
                                                 <button class="btn btn-primary" >Login</button>
                                             </div>
                                         </form>

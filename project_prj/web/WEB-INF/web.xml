@@ -40,6 +40,10 @@
         <servlet-name>gotosignup</servlet-name>
         <servlet-class>controller.gotosignup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -72,7 +76,10 @@
         <servlet-name>addController</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

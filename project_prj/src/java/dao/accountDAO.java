@@ -17,7 +17,7 @@ import model.account;
  *
  * @author Vu Dai Luong
  */
-public class accountDAO {
+public class accountDAO extends DBContext{
 
     public account login(String user, String pass) {
         try {
@@ -35,7 +35,7 @@ public class accountDAO {
                         .lastname(rs.getString(3))
                         .username(rs.getString(4))
                         .password(rs.getString(5))
-                        .isadmin(rs.getInt(6)).build();
+                        .role(rs.getString(6)).build();
                 return ac;
             }
         } catch (Exception ex) {
@@ -59,7 +59,7 @@ public class accountDAO {
                         .lastname(rs.getString(3))
                         .username(rs.getString(4))
                         .password(rs.getString(5))
-                        .isadmin(rs.getInt(6)).build();
+                        .role(rs.getString(6)).build();
                 return ac;
             }
         } catch (Exception ex) {

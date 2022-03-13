@@ -19,7 +19,7 @@ import model.category;
  *
  * @author Vu Dai Luong
  */
-public class CategoryDAO {
+public class CategoryDAO extends DBContext{
 
     public List<category> getALLCategories() {
         List<category> list = new ArrayList<>();

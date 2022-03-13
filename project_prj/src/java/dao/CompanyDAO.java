@@ -19,7 +19,7 @@ import model.company;
  *
  * @author Vu Dai Luong
  */
-public class CompanyDAO {
+public class CompanyDAO extends DBContext{
 
     public List<company> getALLCompany() {
         List<company> list = new ArrayList<>();
