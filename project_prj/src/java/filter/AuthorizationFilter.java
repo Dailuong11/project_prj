@@ -6,9 +6,6 @@
 package filter;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -27,8 +24,6 @@ import model.account;
  */
 @WebFilter(filterName = "AuthorizationFilter", urlPatterns = {"/admin/*"})
 public class AuthorizationFilter implements Filter {
-    
-
     /**
      *
      * @param request The servlet request we are processing
@@ -42,32 +37,19 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
-        //kiem tra dang nhap
-        account ac = (account) session.getAttribute("ac");
-        
-        if (ac != null && ac.getRole().equals(ac.ADMIN)) {
+        //Kiểm tra đăng nhập
+        account a = (account) session.getAttribute("a");
+        if (a != null && a.getRole().equals(account.ADMIN)) {
             //cho qua
             chain.doFilter(request, response);
             return;
         }
-        req.setAttribute("error", "You are not permission");
-        req.getRequestDispatcher("../login.jsp").forward(request, response);
+         res.sendRedirect("http://localhost:8080/home/login");
     }
-
-    /**
-     * Return the filter configuration object for this filter.
-     */
-
-
-    /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
-
+    
     /**
      * Destroy method for this filter
      */
@@ -77,12 +59,15 @@ public class AuthorizationFilter implements Filter {
 
     /**
      * Init method for this filter
+     * @param filterConfig
      */
     @Override
     public void init(FilterConfig filterConfig) {        
-        }
-    
+      
     }
+
+    
+}
 
  
   

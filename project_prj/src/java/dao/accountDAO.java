@@ -17,7 +17,7 @@ import model.account;
  *
  * @author Vu Dai Luong
  */
-public class accountDAO extends DBContext{
+public class accountDAO extends DBContext {
 
     public account login(String user, String pass) {
         try {
@@ -31,11 +31,11 @@ public class accountDAO extends DBContext{
             while (rs.next()) {
                 account ac = account.builder()
                         .id(rs.getInt(1))
-                        .firstname(rs.getString(2))
-                        .lastname(rs.getString(3))
-                        .username(rs.getString(4))
-                        .password(rs.getString(5))
-                        .role(rs.getString(6)).build();
+                        .displayname(rs.getString(2))
+                        .username(rs.getString(3))
+                        .password(rs.getString(4))
+                        .role(rs.getString(5))
+                        .build();
                 return ac;
             }
         } catch (Exception ex) {
@@ -55,11 +55,10 @@ public class accountDAO extends DBContext{
             while (rs.next()) {
                 account ac = account.builder()
                         .id(rs.getInt(1))
-                        .firstname(rs.getString(2))
-                        .lastname(rs.getString(3))
-                        .username(rs.getString(4))
-                        .password(rs.getString(5))
-                        .role(rs.getString(6)).build();
+                        .displayname(rs.getString(2))
+                        .username(rs.getString(3))
+                        .password(rs.getString(4))
+                        .role(rs.getString(5)).build();
                 return ac;
             }
         } catch (Exception ex) {
@@ -68,26 +67,24 @@ public class accountDAO extends DBContext{
         return null;
     }
 
-    public void singup(String firstname,String lastname,String user, String pass) {
+    public void singup(String displayname, String user, String pass) {
 
         try {
             String query = "INSERT INTO [dbo].[Account]\n"
-                    + "           ([firstname]\n"
-                    + "           ,[lastname]\n"
+                    + "           ([displayname]\n"
                     + "           ,[username]\n"
                     + "           ,[passwords]\n"
-                    + "           ,[isAdmin])\n"
+                    + "           ,[role])\n"
                     + "     VALUES\n"
-                    + "           (?,?,?,?,?)";
+                    + "           (?,?,?,'user')";
 
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, firstname);
-            ps.setString(2, lastname);
-            ps.setString(3, user);
-            ps.setString(4, pass);
+            ps.setString(1, displayname);
+            ps.setString(2, user);
+            ps.setString(3, pass);
             ps.executeUpdate();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(accountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

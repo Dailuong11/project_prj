@@ -39,13 +39,13 @@ public class LogoutController extends HttpServlet {
             String username = null;
             String password = null;
             for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("username")) {
+                if (cooky.getName().equals("user")) {
                     cooky.setMaxAge(0);
-                    username = cooky.getValue();
+                    response.addCookie(cooky);
                 }
-                if (cooky.getName().equals("password")) {
+                if (cooky.getName().equals("pass")) {
                     cooky.setMaxAge(0);
-                    password = cooky.getValue();
+                    response.addCookie(cooky);
                 }
       
             }

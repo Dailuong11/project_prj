@@ -24,8 +24,8 @@ import model.account;
  *
  * @author Vu Dai Luong
  */
-@WebFilter(filterName = "Authenticationfilter", urlPatterns = {"/add-to-card", "/admin*"})
-public class Authenticationfilter implements Filter {
+@WebFilter(filterName = "AunthenticationFilter", urlPatterns = {"/add-to-card","/admin/*"})
+public class AunthenticationFilter implements Filter {
 
     /**
      *
@@ -42,56 +42,60 @@ public class Authenticationfilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+
         HttpSession session = req.getSession();
-        //kiem tra dang nhap
-        account ac = (account) session.getAttribute("ac");
-        
-        if (ac != null) {
+        //Kiểm tra đăng nhập
+        account a = (account) session.getAttribute("a");
+
+        if (a != null) {
             //cho qua
             chain.doFilter(request, response);
-        }else{
-           // check cookie
-                  Cookie[] cookies = req.getCookies();
+        } else {
+            //check cookie
+            //kiểm tra cookie
+            Cookie[] cookies = req.getCookies();
             String username = null;
             String password = null;
             for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("username")) {
+                if (cooky.getName().equals("user")) {
                     username = cooky.getValue();
                 }
-                if (cooky.getName().equals("password")) {
+                if (cooky.getName().equals("pass")) {
                     password = cooky.getValue();
                 }
                 if (username != null && password != null) {
                     break;
                 }
             }
+
             if (username != null && password != null) {
-                account aclogin = new accountDAO().login(username, password);
-                if (ac != null) { // cookie hop le
-                    session.setAttribute("ac", ac);
+                account accountLogin = new accountDAO().login(username, password);
+                if (a != null) { //cookie hợp lệ
+                    session.setAttribute("a", a);
                     chain.doFilter(request, response);
                     return;
                 }
             }
             res.sendRedirect("login");
         }
-        
     }
 
     /**
- * Destroy method for this filter
- */
-@Override
-        public void destroy() {        
+     * Destroy method for this filter
+     */
+    @Override
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
+     *
      * @param filterConfig
      */
     @Override
-        public void init(FilterConfig filterConfig) {        
-       
+    public void init(FilterConfig filterConfig) {
+
     }
 
 }
+

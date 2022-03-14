@@ -22,8 +22,7 @@ public class account {
     public static final String ADMIN = "admin";
     public static final String USER ="user";
     private int id;
-    private String firstname;
-    private String lastname;
+    private String displayname;
     private String username;
     private String password;
     private String role;

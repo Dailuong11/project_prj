@@ -85,9 +85,9 @@ public class loginController extends HttpServlet {
                 }
             }
             if (username != null && password != null) {
-                account ac = new accountDAO().login(username, password);
-                if (ac != null) { // cookie hop le
-                    request.getSession().setAttribute("ac", ac);
+                account a = new accountDAO().login(username, password);
+                if (a != null) { // cookie hop le
+                    request.getSession().setAttribute("a", a);
                     response.sendRedirect("maim.html");
                     return;
                 }
@@ -121,4 +121,3 @@ public class loginController extends HttpServlet {
     }// </editor-fold>
 
 }
-

@@ -28,19 +28,9 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
                                         <form action="signup" method="post">
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="firstname" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">First name</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input name="lastname" class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">Last name</label>
-                                                    </div>
-                                                </div>
+                                            <div class="form-floating mb-3">
+                                                <input name="displayname" class="form-control" id="inputEmail" type="name" placeholder="name" />
+                                                <label for="displayname">display name</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input name="username" class="form-control" id="inputEmail" type="name" placeholder="name" />
