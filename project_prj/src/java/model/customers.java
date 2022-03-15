@@ -19,6 +19,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class customers {
+    private int id;
     private String name;
     private String gmail;
     private String role;

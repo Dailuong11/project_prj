@@ -5,23 +5,22 @@
  */
 package controller;
 
-import dao.accountDAO;
+import dao.customersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.account;
+import model.customers;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "updateSurveyController", urlPatterns = {"/update"})
+public class updateSurveyController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,26 +34,17 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        boolean remember = request.getParameter("remember") != null;
-        accountDAO dao = new accountDAO();
-        account a = dao.login(username, password);
-        if (a != null) {
-            if (remember) {
-                Cookie usernameCookie = new Cookie("user", username);
-                usernameCookie.setMaxAge(60*60*24);
-                Cookie passwordCookie = new Cookie("pass", password);
-                passwordCookie.setMaxAge(60*60*24);
-                response.addCookie(usernameCookie);
-                response.addCookie(passwordCookie);
-            }
-             request.getSession().setAttribute("a", a);
-             response.sendRedirect("main.html");
-        } else {
-            request.setAttribute("error", "Username or password incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet updateSurveyController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet updateSurveyController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -70,31 +60,14 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
-            String username = null;
-            String password = null;
-            for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("username")) {
-                    username = cooky.getValue();
-                }
-                if (cooky.getName().equals("password")) {
-                    password = cooky.getValue();
-                }
-                if (username != null && password != null) {
-                    break;
-                }
-            }
-            if (username != null && password != null) {
-                account a = new accountDAO().login(username, password);
-                if (a != null) { // cookie hop le
-                    request.getSession().setAttribute("a", a);
-                    response.sendRedirect("main.html");
-                    return;
-                }
-            }
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-    
+        customersDAO dao = new customersDAO();
+        
+         int customersid = (int)request.getSession().getAttribute("id");
+        
+       
+
+        request.getRequestDispatcher("updatesurvey.jsp").forward(request, response);
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.

@@ -48,7 +48,7 @@
                     </div>
                         <c:choose>
                             <c:when test="${sessionScope.a != null}">
-                                <button class="btn btn-outline-primary ms-lg-2">${sessionScope.a.lastname}</button>
+                                <button class="btn btn-outline-primary ms-lg-2">${sessionScope.a.displayname}</button>
                                 <a href="logout"class="btn btn-outline-primary ms-lg-2">Logout</a>
                                 </c:when>
                                 <c:otherwise>
