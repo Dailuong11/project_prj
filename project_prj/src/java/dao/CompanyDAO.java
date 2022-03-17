@@ -37,7 +37,7 @@ public class CompanyDAO extends DBContext{
                         .description(rs.getString(5))
                         .imagine(rs.getString(6))
                         .create_date(rs.getString(7))
-                        .phone(rs.getInt(8))
+                        .phone(rs.getString(8))
                         .category_id(rs.getInt(9))
                         .profesion(rs.getString(10)).build();
                 list.add(cp);
@@ -69,7 +69,7 @@ public class CompanyDAO extends DBContext{
                         .description(rs.getString(5))
                         .imagine(rs.getString(6))
                         .create_date(rs.getString(7))
-                        .phone(rs.getInt(8))
+                        .phone(rs.getString(8))
                         .category_id(rs.getInt(9))
                         .profesion(rs.getString(10)).build();
                 list.add(com);
@@ -101,7 +101,7 @@ public class CompanyDAO extends DBContext{
                         .description(rs.getString(5))
                         .imagine(rs.getString(6))
                         .create_date(rs.getString(7))
-                        .phone(rs.getInt(8))
+                        .phone(rs.getString(8))
                         .category_id(rs.getInt(9))
                         .profesion(rs.getString(10)).build();
                 list.add(cp);
@@ -146,7 +146,7 @@ public class CompanyDAO extends DBContext{
                         .description(rs.getString(5))
                         .imagine(rs.getString(6))
                         .create_date(rs.getString(7))
-                        .phone(rs.getInt(8))
+                        .phone(rs.getString(8))
                         .category_id(rs.getInt(9))
                         .profesion(rs.getString(10)).build();
                 list.add(cp);
@@ -173,7 +173,7 @@ public class CompanyDAO extends DBContext{
                         .description(rs.getString(5))
                         .imagine(rs.getString(6))
                         .create_date(rs.getString(7))
-                        .phone(rs.getInt(8))
+                        .phone(rs.getString(8))
                         .category_id(rs.getInt(9))
                         .profesion(rs.getString(10)).build();
                return cp;
@@ -182,6 +182,18 @@ public class CompanyDAO extends DBContext{
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;  
+    }
+    public void deleteCompany (String id){
+        try {
+            String sql = "delete from company where id = ?";
+            
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.executeUpdate();           
+        } catch (Exception ex) {
+            Logger.getLogger(CompanyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

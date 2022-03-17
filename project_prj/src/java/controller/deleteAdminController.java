@@ -8,20 +8,16 @@ package controller;
 import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "AdminController", urlPatterns = {"/admin/dashboard"})
-public class AdminController extends HttpServlet {
+public class deleteAdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +32,11 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+           String id = request.getParameter("sid");
             CompanyDAO dao = new CompanyDAO();
-            List<company> list = dao.getALLCompany();
-            request.setAttribute("listcp", list);
-            
-            
-            request.getRequestDispatcher("../dashboard.jsp").forward(request, response);
+            dao.deleteCompany(id);
+            response.sendRedirect("../dashboard.jsp");
         }
     }
 

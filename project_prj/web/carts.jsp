@@ -55,7 +55,6 @@
                             <td>${C.value.com.name}</td>
                             <td>${C.value.com.salary}</td>
                             <td><a href="delete-cart?companyId=${C.value.com.id}" class="btn btn-outline-danger">Delete</a></td>
-                            <td><a class="btn btn-outline-primary">Change</a</td>
                         </tr>
                         </c:forEach>
                     </tbody>

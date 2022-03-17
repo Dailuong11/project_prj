@@ -48,6 +48,10 @@
         <servlet-name>loginController</servlet-name>
         <servlet-class>controller.loginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteAdminController</servlet-name>
+        <servlet-class>controller.deleteAdminController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -90,12 +94,16 @@
     </servlet-mapping>
     <filter-mapping>
         <filter-name>AunthenticationFilter</filter-name>
-        <url-pattern />
+        <url-pattern/>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern />
+        <url-pattern/>
     </filter-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAdminController</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -25,8 +25,8 @@ public class company {
     private double salary;
     private String description;
     private String imagine;
-    private  String create_date;
-    private int phone;
+    private String create_date;
+    private String phone;
     private int category_id;
     private String profesion;
 }
