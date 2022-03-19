@@ -25,7 +25,7 @@
             rel="stylesheet"
             />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.servletContext.contextPath}/css/styles.css" rel="stylesheet"/>
     </head>
     <body>
         <%@include file="components/navbarComponent.jsp" %>
