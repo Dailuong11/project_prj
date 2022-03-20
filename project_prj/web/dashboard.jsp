@@ -45,6 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <c:forEach items="${listcp}" var="C">
                             <tr>
                                 <th scope="row">${C.id}</th>
@@ -52,7 +53,9 @@
                                 <td>${C.name}</td>
                                 <td>${C.salary}</td>
                                 <td>${C.quantity}</td>
+                                <c:if test="${sessionScope.a.getRole() eq 'admin'}">
                                 <td><a href="delete?sid=${C.id}" class="btn btn-outline-danger">Delete</a></td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                     </tbody>
