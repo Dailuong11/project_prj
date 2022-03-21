@@ -36,7 +36,7 @@ public class deleteAdminController extends HttpServlet {
            String id = request.getParameter("sid");
             CompanyDAO dao = new CompanyDAO();
             dao.deleteCompany(id);
-            response.sendRedirect("../dashboard.jsp");
+            response.sendRedirect("http://localhost:8080/home/admin/dashboard");
         }
     }
 

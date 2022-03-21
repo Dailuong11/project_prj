@@ -54,7 +54,7 @@
                                 <td>${C.salary}</td>
                                 <td>${C.quantity}</td>
                                 <c:if test="${sessionScope.a.getRole() eq 'admin'}">
-                                <td><a href="delete?sid=${C.id}" class="btn btn-outline-danger">Delete</a></td>
+                                    <td><a href="#" onclick="showMess(${C.id})" class="btn btn-outline-danger">Delete</a></td>
                                 </c:if>
                             </tr>
                         </c:forEach>
@@ -65,5 +65,13 @@
         </section>
         <!-- Footer-->
     </body>
+    <script>
+        function showMess(id){
+            var option = confirm('Really want to delete ???');
+            if(option === true){
+                window.location.href = 'delete?sid='+id;
+            } 
+        }   
+    </script>
 </html>
 

@@ -102,9 +102,6 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
                             </div>
                             <!-- Product actions-->
                             <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">

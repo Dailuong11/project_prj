@@ -14,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.account;
 import model.company;
 
 /**
@@ -36,6 +38,8 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            account a = (account)session.getAttribute("a");
             CompanyDAO dao = new CompanyDAO();
             List<company> list = dao.getALLCompany();
             request.setAttribute("listcp", list);

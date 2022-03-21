@@ -51,9 +51,6 @@
                             <div class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
                                 <a class="bi-cart-fill me-1">DANG KI THANH CONG</a>
                             </div>
-                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <a href="update?sid=${cu.id}" class="bi-cart-fill me-1">THAY DOI HO SO</a>
-                            </button>
                         </div>
                     </div>
                 </div>

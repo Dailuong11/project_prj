@@ -71,14 +71,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder=" Email" name="email">
-                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control"  placeholder=" quantity" name="quantity">
+                                    <label for="quantity">Quantity</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="role" name="role">
-                                    <label for="role">role</label>
+                                    <input type="text" class="form-control" id="subject" placeholder="salary" name="salary">
+                                    <label for="salary">salary</label>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -87,14 +87,38 @@
                                     <label for="description">Description</label>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="imagine" name="imagine">
+                                    <label for="imagine">imagine</label>
+                                </div>
+                             </div>
                              <div class="col-12">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="subject" placeholder="phone" name="phone">
                                     <label for="phone">phone</label>
                                 </div>
                              </div>
+                             <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="create_date" name="create_date">
+                                    <label for="create_date">Create_date</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="category_id" name="category_id">
+                                    <label for="category_id">Category_id</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="profession" name="profession">
+                                    <label for="profession">Profession</label>
+                                </div>
+                             </div>
                                  <div class="col-12" >
-                                     <button class="btn btn-primary w-100 py-3" type="submit"> NOP HO SO</button>                        
+                                     <button class="btn btn-primary w-100 py-3" type="submit">Create Survey</button>                        
                             </div>
                         </div>
                     </form>

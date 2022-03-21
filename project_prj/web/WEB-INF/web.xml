@@ -102,7 +102,7 @@
     </filter-mapping>
     <servlet-mapping>
         <servlet-name>deleteAdminController</servlet-name>
-        <url-pattern>/delete</url-pattern>
+        <url-pattern>/admin/delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
