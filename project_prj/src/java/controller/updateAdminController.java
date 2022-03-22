@@ -33,10 +33,21 @@ public class updateAdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+         CompanyDAO dao = new CompanyDAO();
         String id = request.getParameter("sid");
-        CompanyDAO dao = new CompanyDAO();
         company cp = dao.getCompanyByID(id);
         request.setAttribute("cp", cp);
+        String sid = request.getParameter("id");
+        String sname = request.getParameter("name");
+        int squantity = Integer.parseInt(request.getParameter("quantity"));
+        double ssalary = Double.parseDouble(request.getParameter("salary"));
+        String sdescription = request.getParameter("description");
+        String simagine = request.getParameter("imagine");
+        String phone = request.getParameter("phone");
+        Date screate_date = Date.valueOf(request.getParameter("create_date"));
+        String scategory = request.getParameter("Category_id");
+        String sprofession = request.getParameter("profession");
+        dao.updateStudent(sid, sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession); 
         request.getRequestDispatcher("http://localhost:8080/home/admin/dashboard").forward(request, response);
     }
 
@@ -52,7 +63,8 @@ public class updateAdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("updateAdmin.jsp").forward(request, response);
+
     }
 
     /**
@@ -66,19 +78,7 @@ public class updateAdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String sid = request.getParameter("id");
-            String sname = request.getParameter("name");
-            int squantity = Integer.parseInt(request.getParameter("quantity"));
-            double ssalary = Double.parseDouble(request.getParameter("salary"));
-            String sdescription = request.getParameter("description");
-            String simagine = request.getParameter("imagine");
-            String phone = request.getParameter("phone");
-            Date screate_date = Date.valueOf(request.getParameter("create_date"));
-            String scategory = request.getParameter("Category_id");
-            String sprofession = request.getParameter("profession");
-            CompanyDAO dao = new CompanyDAO();
-            dao.updateStudent(sid, sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession);
-            response.sendRedirect("http://localhost:8080/home/admin/dashboard");
+        processRequest(request, response);
     }
 
     /**

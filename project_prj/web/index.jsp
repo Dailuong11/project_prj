@@ -59,7 +59,6 @@
                             >
                             <c:forEach items="${listCp}" var="p">
                                 <div class="col mb-5">
-                                    ${p.id}
                                     <div class="card h-100">
                                         <!-- Sale badge-->
                                         <div
