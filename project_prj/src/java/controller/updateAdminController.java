@@ -34,9 +34,8 @@ public class updateAdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          CompanyDAO dao = new CompanyDAO();
-        String id = request.getParameter("sid");
-        company cp = dao.getCompanyByID(id);
-        request.setAttribute("cp", cp);
+        
+        
         String sid = request.getParameter("id");
         String sname = request.getParameter("name");
         int squantity = Integer.parseInt(request.getParameter("quantity"));
@@ -48,7 +47,7 @@ public class updateAdminController extends HttpServlet {
         String scategory = request.getParameter("Category_id");
         String sprofession = request.getParameter("profession");
         dao.updateStudent(sid, sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession); 
-        request.getRequestDispatcher("http://localhost:8080/home/admin/dashboard").forward(request, response);
+        response.sendRedirect("http://localhost:8080/home/admin/dashboard");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +62,11 @@ public class updateAdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("updateAdmin.jsp").forward(request, response);
+        CompanyDAO dao = new CompanyDAO();
+        String id = request.getParameter("sid");
+        company cp = dao.getCompanyByID(id);
+        request.setAttribute("cp", cp);
+        request.getRequestDispatcher("../updateAdmin.jsp").forward(request, response);
 
     }
 

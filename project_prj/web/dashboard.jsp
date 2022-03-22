@@ -54,12 +54,12 @@
                                 <td>${C.salary}</td>
                                 <td>${C.quantity}</td>                          
                                     <td><a href="#" onclick="showMess(${C.id})" class="btn btn-outline-danger">Delete</a></td>
-                                    <td><a href="#" onclick="showMess2(${C.id})" class="btn btn-outline-success">Edit</a></td>   
+                                    <td><a href="update?sid=${C.id}"  class="btn btn-outline-success">Edit</a></td>   
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
-                <a href="admin/addcompany">Create</a>
+                <a href="addcompany">Create</a>
             </div>
         </section>
         <!-- Footer-->
@@ -70,13 +70,7 @@
             if(option === true){
                 window.location.href = 'delete?sid='+id;
             } 
-        }
-        function showMess2(id){
-            var option = confirm('Really want to update ???');
-            if(option === true){
-                window.location.href = 'update?sid='+id;
-            } 
-        }   
+        } 
     </script>
 </html>
 
