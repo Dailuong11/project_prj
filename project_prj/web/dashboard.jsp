@@ -58,8 +58,8 @@
                             </tr>
                         </c:forEach>
                     </tbody>
-                </table>
-                <a href="addcompany">Create</a>
+                    <a href="addcompany">Create</a>
+                </table>               
             </div>
         </section>
         <!-- Footer-->
