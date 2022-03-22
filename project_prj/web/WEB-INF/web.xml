@@ -52,6 +52,14 @@
         <servlet-name>deleteAdminController</servlet-name>
         <servlet-class>controller.deleteAdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addCompanyController</servlet-name>
+        <servlet-class>controller.addCompanyController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateAdminController</servlet-name>
+        <servlet-class>controller.updateAdminController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>deleteAdminController</servlet-name>
         <url-pattern>/admin/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCompanyController</servlet-name>
+        <url-pattern>/admin/addcompany</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateAdminController</servlet-name>
+        <url-pattern>/admin/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

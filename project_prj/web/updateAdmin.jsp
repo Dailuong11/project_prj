@@ -61,59 +61,64 @@
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                        <form action="addcompany" method="post">
+                        <form action="update" method="post">
                             <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder=" id" hidden="id" name="id" value="${cp.id}">
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder=" Name" name="name">
+                                        <input type="text" class="form-control" id="name" placeholder=" Name" name="name" value="${cp.name}">
                                         <label for="name">Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control"  placeholder=" quantity" name="quantity">
+                                        <input type="text" class="form-control"  placeholder=" quantity" name="quantity" value="${cp.quantity}">
                                         <label for="quantity">Quantity</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="salary" name="salary">
+                                        <input type="text" class="form-control" id="subject" placeholder="salary" name="salary" value="${cp.salary}">
                                         <label for="salary">salary</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px" name="description"></textarea>
+                                        <input class="form-control" placeholder="Leave a message here" id="message" style="height: 150px" name="description" value="${cp.description}">
                                         <label for="description">Description</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="imagine" name="imagine">
+                                        <input type="text" class="form-control" id="subject" placeholder="imagine" name="imagine" value="${cp.imagine}">
                                         <label for="imagine">imagine</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="phone" name="phone">
+                                        <input type="text" class="form-control" id="subject" placeholder="phone" name="phone" value="${cp.phone}">
                                         <label for="phone">phone</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="create_date" name="create_date">
+                                        <input type="text" class="form-control" id="name" placeholder="create_date" name="create_date" value="${cp.create_date}">
                                         <label for="create_date">Create_date</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Category_id" name="Category_id">
+                                        <input type="text" class="form-control" id="name" placeholder="Category_id" name="Category_id" value="${cp.category_id}">
                                         <label for="Category_id">Category_id</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="profession" name="profession">
+                                        <input type="text" class="form-control" id="subject" placeholder="profession" name="profession" value="${cp.profesion}">
                                         <label for="profession">Profession</label>
                                     </div>
                                 </div>

@@ -5,26 +5,21 @@
  */
 package controller;
 
-
 import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Date;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.account;
 import model.company;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "AdminController", urlPatterns = {"/admin/dashboard"})
-public class AdminController extends HttpServlet {
+public class updateAdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,17 +33,11 @@ public class AdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            account a = (account)session.getAttribute("a");
-            CompanyDAO dao = new CompanyDAO();
-            List<company> list = dao.getALLCompany();
-            
-            request.setAttribute("listcp", list);
-           
-            
-            request.getRequestDispatcher("../dashboard.jsp").forward(request, response);
-        }
+        String id = request.getParameter("sid");
+        CompanyDAO dao = new CompanyDAO();
+        company cp = dao.getCompanyByID(id);
+        request.setAttribute("cp", cp);
+        request.getRequestDispatcher("http://localhost:8080/home/admin/dashboard").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,7 +66,19 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            String sid = request.getParameter("id");
+            String sname = request.getParameter("name");
+            int squantity = Integer.parseInt(request.getParameter("quantity"));
+            double ssalary = Double.parseDouble(request.getParameter("salary"));
+            String sdescription = request.getParameter("description");
+            String simagine = request.getParameter("imagine");
+            String phone = request.getParameter("phone");
+            Date screate_date = Date.valueOf(request.getParameter("create_date"));
+            String scategory = request.getParameter("Category_id");
+            String sprofession = request.getParameter("profession");
+            CompanyDAO dao = new CompanyDAO();
+            dao.updateStudent(sid, sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession);
+            response.sendRedirect("http://localhost:8080/home/admin/dashboard");
     }
 
     /**

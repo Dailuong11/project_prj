@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Date;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,7 @@ public class company {
     private double salary;
     private String description;
     private String imagine;
-    private String create_date;
+    private Date create_date;
     private String phone;
     private int category_id;
     private String profesion;

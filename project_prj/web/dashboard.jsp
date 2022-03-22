@@ -52,10 +52,9 @@
                                 <td><img src="${C.imagine}" width="50"/></td>
                                 <td>${C.name}</td>
                                 <td>${C.salary}</td>
-                                <td>${C.quantity}</td>
-                                <c:if test="${sessionScope.a.getRole() eq 'admin'}">
+                                <td>${C.quantity}</td>                          
                                     <td><a href="#" onclick="showMess(${C.id})" class="btn btn-outline-danger">Delete</a></td>
-                                </c:if>
+                                    <td><a href="update?sid=${C.id}" class="btn btn-outline-success">Edit</a></td>   
                             </tr>
                         </c:forEach>
                     </tbody>

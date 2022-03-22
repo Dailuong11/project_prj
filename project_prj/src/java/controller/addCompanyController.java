@@ -5,26 +5,23 @@
  */
 package controller;
 
-
+import dao.CategoryDAO;
 import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.account;
-import model.company;
+import model.category;
 
 /**
  *
  * @author Vu Dai Luong
  */
-@WebServlet(name = "AdminController", urlPatterns = {"/admin/dashboard"})
-public class AdminController extends HttpServlet {
+public class addCompanyController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,15 +36,19 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            account a = (account)session.getAttribute("a");
+            /* TODO output your page here. You may use following sample code. */
+            String sname = request.getParameter("name");
+            int squantity = Integer.parseInt(request.getParameter("quantity"));
+            double ssalary = Double.parseDouble(request.getParameter("salary"));
+            String sdescription = request.getParameter("description");
+            String simagine = request.getParameter("imagine");
+            String phone = request.getParameter("phone");
+            Date screate_date = Date.valueOf(request.getParameter("create_date"));
+            String scategory = request.getParameter("Category_id");
+            String sprofession = request.getParameter("profession");
             CompanyDAO dao = new CompanyDAO();
-            List<company> list = dao.getALLCompany();
-            
-            request.setAttribute("listcp", list);
-           
-            
-            request.getRequestDispatcher("../dashboard.jsp").forward(request, response);
+            dao.insertCompany(sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession);
+               response.sendRedirect("http://localhost:8080/home/admin/dashboard");
         }
     }
 
