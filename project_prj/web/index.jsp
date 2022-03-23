@@ -30,15 +30,16 @@
     <body>
         <%@include file="components/navbarComponent.jsp" %>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="py-5" style= " background-image:url(https://i.ytimg.com/vi/-xZnzxovFqw/maxresdefault.jpg); width: 100% ; height: 350px" >          
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">
-                        With this shop hompeage template
+                    <h1 class="display-4 fw-bolder">DREAM JOB</h1>
+                    <p class="lead fw-normal mb-0">
+                        Đừng tuyển người,
+                        hãy tuyển nhân tài
                     </p>
                 </div>
-            </div>
+            </div >
         </header>
         <!-- Section-->
         <section class="py-5">
@@ -69,11 +70,11 @@
                                         </div>
                                         <!-- Product image-->
                                         <a href="detail?companyId=${p.id}">
-                                        <img
-                                            class="card-img-top"
-                                            src="${p.imagine}"
-                                            alt="..."
-                                            />
+                                            <img
+                                                class="card-img-top"
+                                                src="${p.imagine}"
+                                                alt="..."
+                                                />
                                         </a>
                                         <!-- Product details-->
                                         <div class="card-body p-4">
@@ -113,23 +114,23 @@
                             </c:when>
                             <c:otherwise>
                                 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="main.html?page=${page-1}">Previous</a></li>
-                                <c:forEach begin="1" end="${totalPage}" var="i">
-                                <li class="page-item ${i==page?"active":""}"><a class="page-link" href="main.html?page=${i}">${i}</a></li>
-                                </c:forEach>
-                                <li class="page-item"><a class="page-link" href="main.html?page=${page+1}">Next</a></li>
-                            </ul>
-                        </nav>
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="main.html?page=${page-1}">Previous</a></li>
+                                            <c:forEach begin="1" end="${totalPage}" var="i">
+                                            <li class="page-item ${i==page?"active":""}"><a class="page-link" href="main.html?page=${i}">${i}</a></li>
+                                            </c:forEach>
+                                        <li class="page-item"><a class="page-link" href="main.html?page=${page+1}">Next</a></li>
+                                    </ul>
+                                </nav>
                             </c:otherwise>
                         </c:choose>
-                        
+
                     </div>
                 </div>
             </div>
         </section>
-<!--        footer-->
-       <%@include file="components/footerComponents.jsp" %>
-        
+        <!--        footer-->
+        <%@include file="components/footerComponents.jsp" %>
+
     </body>
 </html>

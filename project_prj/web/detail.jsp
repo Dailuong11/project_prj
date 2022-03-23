@@ -37,18 +37,27 @@
                     <div class="col-md-6">
                         <h1 class="display-5 fw-bolder">${cp.name}</h1>
                         <div class="fs-5 mb-5">
-                            <span >salary</span>
-                            <span>$${cp.salary}</span>
+                            <span >Salary</span>
+                            <span>$${cp.salary}</span><br>
+
+
+                            <span >Phone</span>
+                            <span>${cp.phone}</span><br>
+
+
+                            <span >Profesion</span>
+                            <span>${cp.profesion}</span><br>
+
+
+                            <span >Create of date</span>
+                            <span>${cp.create_date}</span>
                         </div>
                         <h3>Description</h3>
                         <p class="lead"> ${cp.description}</p>
                         <div class="d-flex">
                             <!--                           <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />-->
-                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <a href="add-to-card?companyId=${cp.id}" class="bi-cart-fill me-1">UNG TUYEN</a>
-                            </button>
-                            <button class="btn btn-outline-success flex-shrink-0 ms-2" type="button">
-                                <a href="survey.html" class="bi-cart-fill me-1">DANG KI HO SO</a>
+                            <button class="btn btn-outline-success flex-shrink-0 ms-2" style="background-color: #06BBCC" type="button">
+                                <a href="survey.html" class="bi-cart-fill me-1" >DANG KI HO SO</a>
                             </button>
                         </div>
                     </div>

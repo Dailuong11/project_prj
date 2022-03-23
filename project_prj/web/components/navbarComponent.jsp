@@ -9,7 +9,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="main.html">DREAMJOB</a>
+                <a class="navbar-brand" style="color: #06BBCC" href="main.html">DREAMJOB</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -41,7 +41,7 @@
                         </button>
                     </form>
                     <div class="d-flex my-2">
-                        <a class="btn btn-outline-dark" href="carts">
+                        <a class="btn btn-outline-success" href="carts">
                             thông tin hoạt động
                             <span class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
                         </a>

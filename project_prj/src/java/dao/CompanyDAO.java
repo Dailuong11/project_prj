@@ -49,10 +49,6 @@ public class CompanyDAO extends DBContext {
         return list;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new CompanyDAO().getALLCompany());
-    }
-
     public List<company> getCompaniesByCategoryId(int categoryId) {
         List<company> list = new ArrayList<>();
         try {
@@ -202,7 +198,8 @@ public class CompanyDAO extends DBContext {
             String imagine, Date create_date, String phone, int category_id, String profession) {
         try {
             String sql = "INSERT INTO [dbo].[company]\n"
-                    + "           ([name]\n"
+                    + "           (\n"
+                    + "           ,[name]\n"
                     + "           ,[quantity]\n"
                     + "           ,[salary]\n"
                     + "           ,[description]\n"
@@ -211,6 +208,7 @@ public class CompanyDAO extends DBContext {
                     + "           ,[phone]\n"
                     + "           ,[category_id]\n"
                     + "           ,[profession]\n"
+                    + "           )\n"
                     + "     VALUES\n"
                     + "           (?,?,?,?,?,?,?,?,?)";
             Connection conn = new DBContext().getConnection();
@@ -272,10 +270,10 @@ public class CompanyDAO extends DBContext {
                     + "      ,[category_id] = ?\n"
                     + "      ,[profession] = ?\n"
                     + " WHERE id = ?";
-            
+
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-             ps.setString(1, name);
+            ps.setString(1, name);
             ps.setInt(2, quantity);
             ps.setDouble(3, salary);
             ps.setString(4, description);
@@ -286,8 +284,10 @@ public class CompanyDAO extends DBContext {
             ps.setString(9, profession);
             ps.setString(10, id);
             ps.executeUpdate();
+
         } catch (Exception ex) {
             Logger.getLogger(CompanyDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }
