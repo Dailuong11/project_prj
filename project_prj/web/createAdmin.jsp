@@ -63,6 +63,12 @@
                     <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                         <form action="addcompany" method="post">
                             <div class="row g-3">
+                                 <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="sid" name="sid">
+                                        <label for="sid">sid</label>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="name" placeholder=" Name" name="name">
@@ -115,6 +121,12 @@
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="subject" placeholder="profession" name="profession">
                                         <label for="profession">Profession</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="accountid" name="accountid">
+                                        <label for="accountid">Accountid</label>
                                     </div>
                                 </div>
                                 <div class="col-12" >

@@ -49,9 +49,14 @@ public class loginController extends HttpServlet {
                 response.addCookie(usernameCookie);
                 response.addCookie(passwordCookie);
             }
+         
              request.getSession().setAttribute("a", a);
-             response.sendRedirect("main.html");
-        } else {
+             response.sendRedirect("dashboard");
+        }
+      
+  
+        
+        else {
             request.setAttribute("error", "Username or password incorrect");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             
@@ -70,6 +75,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         Cookie[] cookies = request.getCookies();
             String username = null;
             String password = null;
@@ -84,11 +90,18 @@ public class loginController extends HttpServlet {
                     break;
                 }
             }
-            if (username != null && password != null) {
+            if (username != null && password != null ) {
                 account a = new accountDAO().login(username, password);
-                if (a != null) { // cookie hop le
+                if (a != null && a.getRole().equals(account.ADMIN)) { 
+                      
+                    
                     request.getSession().setAttribute("a", a);
-                    response.sendRedirect("main.html");
+                    response.sendRedirect("../dashboard.jsp");
+                    return;
+                }
+                if (a != null) {
+                    request.getSession().setAttribute("a", a);
+                    response.sendRedirect("index.jsp");
                     return;
                 }
             }

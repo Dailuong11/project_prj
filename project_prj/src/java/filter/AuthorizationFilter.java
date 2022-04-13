@@ -42,9 +42,11 @@ public class AuthorizationFilter implements Filter {
         HttpSession session = req.getSession();
         //Kiểm tra đăng nhập
         account a = (account) session.getAttribute("a");
-        if (a != null && a.getRole().equals(account.ADMIN)) {
+        if (a != null) {
             //cho qua
+            
             chain.doFilter(request, response);
+            
             return;
         }
          res.sendRedirect("http://localhost:8080/home/login");

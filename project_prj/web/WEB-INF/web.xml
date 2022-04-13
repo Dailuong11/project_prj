@@ -60,6 +60,10 @@
         <servlet-name>updateAdminController</servlet-name>
         <servlet-class>controller.updateAdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logoutAdmincontroller</servlet-name>
+        <servlet-class>controller.logoutAdmincontroller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/main.html</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>updateAdminController</servlet-name>
         <url-pattern>/admin/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutAdmincontroller</servlet-name>
+        <url-pattern>/admin/logout1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

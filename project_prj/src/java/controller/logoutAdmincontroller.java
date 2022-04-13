@@ -5,22 +5,18 @@
  */
 package controller;
 
-import dao.CategoryDAO;
-import dao.CompanyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Vu Dai Luong
  */
-public class addCompanyController extends HttpServlet {
+public class logoutAdmincontroller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,20 +32,7 @@ public class addCompanyController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String id = request.getParameter("sid");
-            String sname = request.getParameter("name");
-            int squantity = Integer.parseInt(request.getParameter("quantity"));
-            double ssalary = Double.parseDouble(request.getParameter("salary"));
-            String sdescription = request.getParameter("description");
-            String simagine = request.getParameter("imagine");
-            String phone = request.getParameter("phone");
-            Date screate_date = Date.valueOf(request.getParameter("create_date"));
-            String scategory = request.getParameter("Category_id");
-            String sprofession = request.getParameter("profession");
-            String accountid = request.getParameter("accountid");       
-            CompanyDAO dao = new CompanyDAO();
-            dao.insertCompany(id, sname, squantity, ssalary, sdescription, simagine, screate_date, phone, squantity, sprofession, accountid);
-               response.sendRedirect("http://localhost:8080/home/admin/dashboard");
+           response.sendRedirect("../login.jsp");
         }
     }
 
@@ -65,8 +48,7 @@ public class addCompanyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.getRequestDispatcher("../createAdmin.jsp").forward(request, response);
-        
+        processRequest(request, response);
     }
 
     /**
@@ -80,7 +62,7 @@ public class addCompanyController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**

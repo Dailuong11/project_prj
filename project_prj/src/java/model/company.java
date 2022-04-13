@@ -30,4 +30,5 @@ public class company {
     private String phone;
     private int category_id;
     private String profesion;
+    private String accountid;
 }

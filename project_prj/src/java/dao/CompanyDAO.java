@@ -194,8 +194,8 @@ public class CompanyDAO extends DBContext {
         }
     }
 
-    public void insertCompany(String name, int quantity, double salary, String description,
-            String imagine, Date create_date, String phone, int category_id, String profession) {
+    public void insertCompany(String id, String name, int quantity, double salary, String description,
+            String imagine, Date create_date, String phone, int category_id, String profession, String accountid) {
         try {
             String sql = "INSERT INTO [dbo].[company]\n"
                     + "           (\n"
@@ -213,15 +213,17 @@ public class CompanyDAO extends DBContext {
                     + "           (?,?,?,?,?,?,?,?,?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setInt(2, quantity);
-            ps.setDouble(3, salary);
-            ps.setString(4, description);
-            ps.setString(5, imagine);
-            ps.setDate(6, create_date);
-            ps.setString(7, phone);
-            ps.setInt(8, category_id);
-            ps.setString(9, profession);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setInt(3, quantity);
+            ps.setDouble(4, salary);
+            ps.setString(5, description);
+            ps.setString(6, imagine);
+            ps.setDate(7, create_date);
+            ps.setString(8, phone);
+            ps.setInt(9, category_id);
+            ps.setString(10, profession);
+            ps.setString(11, accountid);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(CompanyDAO.class.getName()).log(Level.SEVERE, null, ex);
